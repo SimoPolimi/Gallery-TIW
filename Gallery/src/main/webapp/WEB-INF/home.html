@@ -11,9 +11,14 @@
 </head>
 <body>
 	<header>
-		Welcome back&nbsp;<span th:text="${session.user.username}">user</span>
-		<span><a href="Logout">Logout</a></span>
-	</header>	
+	    <div class="header-left">
+	        <span>Welcome back</span>
+	        <span class="header-username" th:text="${session.user.username}">user</span>
+	    </div>
+	    <div class="header-right">	
+	        <a href="Logout" class="logout-link">Logout</a>
+	    </div>
+	</header>
 	<!-- Create album -->
 	<div class="createAlbumDiv">
 	<h2>Create your album:</h2>
@@ -46,8 +51,10 @@
 						name="name" placeholder="Enter image name">
 				</div>
 				<div>
-					<label for="image">Select image to upload:</label> <input
-						type="file" id="image" name="image" accept="image/*" required>
+					<div>
+					    <label for="image" class="btn-file">Choose image</label>
+					    <input type="file" id="image" name="image" accept="image/*" required>
+					</div>
 				</div>
 				<div>
 					<label for="description">Description:</label> <input type="text"
@@ -63,34 +70,44 @@
 	</div>
 	
 	<!-- Albums -->
-	<div class="main-container">
-		<!-- My albums -->	
-		<div class="column">
-		<h1>My albums</h1>
-			<span th:text="${myAlbumsMsg}"></span>
-			<div th:each="a:${myAlbums}" class="album-container">
-				<span th:text="${a.title}">title</span>
-				<span th:text="'(by '+${a.owner.username}+')'">(by owner)</span> 
-				<a th:href="@{/ViewAlbum(albumId=${a.Id}, pageNumber=0)}">
-					<img src="icons/directory.png" class="directory">
-				</a>
-				<span th:text="${a.date}">date</span>
+		<div class="main-container">
+		  <!-- My albums -->
+			<div class="column">
+			  <h1>My albums</h1>
+			  <span th:text="${myAlbumsMsg}"></span>
+			
+			  <div th:each="a:${myAlbums}"
+			       class="album-container"
+			       th:onclick="|window.location.href='@{/ViewAlbum(albumId=${a.Id}, pageNumber=0)}'|">
+			
+			    <img src="icons/directory.png" class="directory">
+			
+			    <div class="album-info">
+			      <span th:text="${a.title}">title</span>
+			      <span th:text="'(by '+${a.owner.username}+')'">(by owner)</span>
+			      <span th:text="${#dates.format(a.date, 'dd/MM/yyyy')}">date</span>
+			    </div>
+			  </div>
+			</div>
+		  <!-- Other albums -->
+		  <div class="column">
+			  <h1>Other albums</h1>
+			  <span th:text="${otherAlbumsMsg}"></span>
+			
+			  <div th:each="a:${otherAlbums}"
+			       class="album-container"
+			       th:onclick="|window.location.href='@{/ViewAlbum(albumId=${a.Id}, pageNumber=0)}'|">
+			
+			    <img src="icons/directory.png" class="directory">
+			
+			    <div class="album-info">
+			      <span th:text="${a.title}">title</span>
+			      <span th:text="'(by '+${a.owner.username}+')'">(by owner)</span>
+			      <span th:text="${#dates.format(a.date, 'dd/MM/yyyy')}">date</span>
+			    </div>
+			  </div>
 			</div>
 		</div>
-		<!-- Other albums -->
-		<div class="column">
-		<h1>Other albums</h1>
-			<span th:text="${otherAlbumsMsg}"></span>
-			<div th:each="a:${otherAlbums}" class="album-container">
-				<span th:text="${a.title}">title</span>
-				<span th:text="'(by '+${a.owner.username}+')'">(by owner)</span> 
-				<a th:href="@{/ViewAlbum(albumId=${a.Id}, pageNumber=0)}">
-					<img src="icons/directory.png" class="directory">
-				</a>
-				<span th:text="${a.date}">date</span>
-			</div>
-		</div>
-	</div>
 	
 </body>
 </html>

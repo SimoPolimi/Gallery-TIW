@@ -10,11 +10,16 @@
 </head>
 <body>
 	<header>
-		Welcome back&nbsp;<span th:text="${session.user.username}">
-			user</span>
-			<a href="ViewHome"><img src="icons/home.png" class="icon"></a>
-			<span><a href="Logout">Logout</a></span>
-			
+	    <div class="header-left">
+	        <span>Welcome back</span>
+	        <span class="header-username" th:text="${session.user.username}">user</span>
+	    </div>
+	    <div class="header-right">
+	        <a href="ViewHome">
+	            <img src="icons/home.png" class="icon">
+	        </a>	
+	        <a href="Logout" class="logout-link">Logout</a>
+	    </div>
 	</header>
 	<div class="table-container">
 	<span th:text="${albumMsg}"></span>
