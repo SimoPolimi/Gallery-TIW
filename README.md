@@ -1,4 +1,4 @@
-# 🖼️ Web Information Technologies Project A.A. 2023-2024
+# 🖼️ Web Information Technologies Project - Academic Year 2023-2024
 
 ## 📝 Project Description
 This project is a web application designed to manage an image gallery. It was developed in two distinct versions throughout the course: a **pure HTML version** and a **JavaScript (Rich Internet Application)** version.
