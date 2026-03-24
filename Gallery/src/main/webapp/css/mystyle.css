@@ -152,6 +152,8 @@ img.in-album {
   height: 250px;
   width: 100%;
   object-fit: cover;
+    border-radius: 8px;
+  
 }
 
 img.big {
@@ -302,10 +304,53 @@ table.image-table {
   margin: 5%;
 }
 
+.image-card-album {
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 6px;
+}
+
+.image-card-album:hover {
+  transform: scale(1.05);
+}
+
+.image-card-album:hover img.in-album {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
 .fixed-cell {
   width: 20%;
   height: 100%;
   text-align: center;
+  margin: 10px;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 0 6px;
+  background-color: #378ADD;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+
+.nav-btn:visited {
+  color: #fff;
+}
+
+.nav-btn:hover {
+	background-color: #185FA5;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.nav-btn:active {
+	transform: scale(0.97);
+  color: #fff;
 }
 
 /* ── Upload card ── */
@@ -571,7 +616,6 @@ div.createAlbumDiv {
   width: auto;
   height: auto;
   max-width: 100%;
-  border-radius: 12px;
   align-self: center;
 }
 

@@ -24,13 +24,13 @@
 	<div class="table-container">
 	<span th:text="${albumMsg}"></span>
 	<!-- pageNumber from 0 to totalPages-1 -->
-	<a th:if="${currentPage > 0 && currentPage <= totalPages-1}" th:href="@{/ViewAlbum(albumId=${param.albumId}, pageNumber=${currentPage - 1})}">Prev</a>
+	<a th:if="${currentPage > 0 && currentPage <= totalPages-1}" th:href="@{/ViewAlbum(albumId=${param.albumId}, pageNumber=${currentPage - 1})}" class="nav-btn">Prev</a>
 	    	
 	<table class="image-table">
 		<tr>
 			<td th:each="i:${images}" class="fixed-cell">
 				<!-- Image present -->
-				<div th:if="${i != null}">
+				<div th:if="${i != null}" class="image-card-album">
 					<span th:text="${i.title}">title</span>
 					<a th:href="@{/ViewImage(imageId=${i.Id}, albumId=${param.albumId}, pageNumber=${param.pageNumber})}">
 					<img th:src="@{/imageGetter(imageName=${i.path})}" class="in-album">
@@ -44,7 +44,7 @@
 		
 	</table>
 
-    <a th:if="${currentPage < totalPages-1 && totalPages > 0}" th:href="@{/ViewAlbum(albumId=${param.albumId}, pageNumber=${currentPage + 1})}">Next</a>
+    <a th:if="${currentPage < totalPages-1 && totalPages > 0}" th:href="@{/ViewAlbum(albumId=${param.albumId}, pageNumber=${currentPage + 1})}" class="nav-btn">Next</a>
 
     </div>
 </body>
