@@ -10,29 +10,52 @@
 </head>
 <body>
 	<header>
-		Welcome back&nbsp;<span th:text="${session.user.username}">
-			user</span>
-			<a th:href="@{/ViewAlbum(albumId=${albumId}, pageNumber=${pageNumber})}"><img src="icons/back.png" class="icon"></a>
-			<a href="ViewHome"><img src="icons/home.png" class="icon"></a>
-			<span><a href="Logout">Logout</a></span>
+	    <div class="header-left">
+	        <span>Welcome back</span>
+	        <span class="header-username" th:text="${session.user.username}">user</span>
+	    </div>
+	    <div class="header-right">
+	        <a th:href="@{/ViewAlbum(albumId=${albumId}, pageNumber=${pageNumber})}">
+	            <img src="icons/back.png" class="icon">
+	        </a>	
+	        <a href="ViewHome">
+	            <img src="icons/home.png" class="icon">
+	        </a>	
+	        <a href="Logout" class="logout-link">Logout</a>
+	    </div>
 	</header>
 	<div class="image-container">
-		<span th:text="${clickedImage.title}" class="image-title">title</span>
-		<img th:src="@{/imageGetter(imageName=${clickedImage.path})}" class="big">
-		<div class="image-info">
-			<span th:text="${clickedImage.description}">description</span>
-			<span th:text="'Image uploaded by '+${clickedImage.user.username}">user</span>
-			<i><span th:text="'('+${clickedImage.creation_date}+')'">creation date</span></i>
-		</div>
-		<h2>Comments:</h2>
-		<span th:text="${CommentsMsg}"></span>
-		<div th:each="c:${comments}">
-			<b><span th:text="${c.user.username}+':'">user</span></b>
-			<span th:text="${c.text}">comment</span>
-			<i><span th:text="'('+${c.date}+')'">date</span></i>
-		</div>
-		<!-- Todo  -->
-		<a th:if="${session.user.username == clickedImage.user.username}" th:href="@{/DeleteImage(imageId=${clickedImage.id})}"><img src="icons/trash.png" class="trash"></a>
+
+	    <!-- MAIN CARD -->
+	    <div class="image-card">
+	        <span class="image-title" th:text="${clickedImage.title}">title</span>
+	
+	        <img th:src="@{/imageGetter(imageName=${clickedImage.path})}" class="big">
+	
+	        <div class="image-info">
+	            <span class="image-description" th:text="${clickedImage.description}">description</span>
+	            <span class="image-user" th:text="'Image uploaded by '+${clickedImage.user.username}">user</span>
+	            <span class="date" th:text="${#dates.format(clickedImage.creation_date, 'dd/MM/yyyy')}">creation date</span>
+	
+	            <a th:if="${session.user.username == clickedImage.user.username}" 
+	               th:href="@{/DeleteImage(imageId=${clickedImage.id})}">
+	                <img src="icons/trash.png" class="trash">
+	            </a>
+	        </div>
+	    </div>
+	
+	    <!-- COMMENTS -->
+	    <div class="comments-container">
+	        <div class="comment" th:each="c:${comments}">
+	            <div class="comment-header">
+	                <span class="username" th:text="${c.user.username}">user</span>
+	                <span class="date" th:text="${#dates.format(c.date, 'dd/MM/yyyy')}"></span>
+	            </div>
+	            <p class="comment-text" th:text="${c.text}"></p>
+	        </div>
+	    </div>
+	
+	</div>
 			
 			
 		<!-- In js action deve essere vuota!!!!!!!!!!!!! se no mi reindirizza alla servlet -->
@@ -40,6 +63,5 @@
 			<input class="round" type="text" name="text" placeholder="Insert comment here" required>
 			<button type="submit" value="send" class="btn btn-primary">Send</button>
 		</form>
-	</div>
 </body>
 </html>

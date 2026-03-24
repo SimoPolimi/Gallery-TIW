@@ -64,6 +64,12 @@ public class ViewImage extends HttpServlet {
 			return;
 		}
 		
+		// if image doesn't exist
+		if (image == null) {
+			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "This image does not exists.");
+		    return;
+		}
+		
 		// Comments
 		
 		CommentDAO commentDAO = new CommentDAO(connection);
