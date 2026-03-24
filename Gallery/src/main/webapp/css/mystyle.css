@@ -588,6 +588,18 @@ div.createAlbumDiv {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
+.empty-album-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 20px;
+  font-weight: 500;
+  color: #666;
+  text-align: center;
+}
+
 /* MAIN IMAGE CARD */
 .image-card {
   width: 100%;
