@@ -58,6 +58,108 @@ body.login {
   height: 100vh;
 }
 
+/* ── LOGIN / REGISTER ── */
+body.login {
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+}
+
+body.login a {
+  color: #378ADD;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+body.login a:hover {
+  color: #185FA5;
+}
+
+/* Card */
+body.login .card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Card Title */
+body.login .card h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+/* Inputs */
+body.login .card input[type="text"],
+body.login .card input[type="email"],
+body.login .card input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+body.login .card input[type="text"]:focus,
+body.login .card input[type="email"]:focus,
+body.login .card input[type="password"]:focus {
+  outline: none;
+  border-color: #378ADD;
+  box-shadow: 0 0 0 3px rgba(55,138,221,0.15);
+}
+
+/* Error message */
+body.login .card p {
+  font-size: 0.9rem;
+  color: #d9534f; /* rosso per errori */
+  margin: 0;
+  min-height: 18px; /* mantiene spazio anche se vuoto */
+}
+
+/* Button */
+body.login .card .btn-primary {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background-color: #378ADD;
+  color: #fff;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+body.login .card .btn-primary:hover {
+  background-color: #185FA5;
+}
+
+body.login .card .btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Bottom link (Login/Register) */
+body.login .card a {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
 header {
   position: fixed;
   top: 0;
